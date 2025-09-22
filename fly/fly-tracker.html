@@ -7,6 +7,8 @@
 </head>
 <body>
   <div id="cesiumContainer"></div>
+  <!-- 用于存放 Cesium credits 的容器，默认隐藏 -->
+  <div id="creditContainer" style="display: none;"></div>
   <script type="module">
     // Your access token can be found at: https://ion.cesium.com/tokens.
     // This is the default access token from your ion account
@@ -26,9 +28,12 @@
       infoBox: false,            // 隐藏信息框
       sceneModePicker: false,    // 隐藏场景模式选择器
       selectionIndicator: false, // 隐藏选择指示器
-      timeline: false,           // 隐藏时间线
+      timeline: true,            // 保持 timeline 启用，因为后面代码需要使用它
       navigationHelpButton: false, // 隐藏导航帮助按钮
-      navigationInstructionsInitiallyVisible: false // 隐藏导航说明
+      navigationInstructionsInitiallyVisible: false, // 隐藏导航说明
+      // 隐藏 Cesium logo
+      creditContainer: "creditContainer", // 指定一个非默认的容器
+      showRenderLoopErrors: true // 显示渲染循环错误，便于调试
     });
 
     const osmBuildings = await Cesium.createOsmBuildingsAsync();
